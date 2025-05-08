@@ -5,7 +5,34 @@ declare namespace AMap {
   /**
    * 地图对象类，封装了地图的属性设置、图层变更、事件交互等接口的类。
    */
-  class Map extends MapEventListener<'mousemove' | 'zoomchange' | 'mapmove' | 'mousewheel' | 'zoomstart' | 'mouseover' | 'mouseout' | 'dblclick' | 'click' | 'zoomend' | 'moveend' | 'mouseup' | 'mousedown' | 'rightclick' | 'movestart' | 'dragstart' | 'dragging' | 'dragend' | 'hotspotout' | 'hotspotover' | 'touchstart' | 'complete' | 'hotspotclick' | 'touchmove' | 'touchend' | 'resize'> {
+  class Map extends MapEventListener<
+    | 'mousemove'
+    | 'zoomchange'
+    | 'mapmove'
+    | 'mousewheel'
+    | 'zoomstart'
+    | 'mouseover'
+    | 'mouseout'
+    | 'dblclick'
+    | 'click'
+    | 'zoomend'
+    | 'moveend'
+    | 'mouseup'
+    | 'mousedown'
+    | 'rightclick'
+    | 'movestart'
+    | 'dragstart'
+    | 'dragging'
+    | 'dragend'
+    | 'hotspotout'
+    | 'hotspotover'
+    | 'touchstart'
+    | 'complete'
+    | 'hotspotclick'
+    | 'touchmove'
+    | 'touchend'
+    | 'resize'
+  > {
     /**
      * @param div 构造一个地图对象，参数 container 中传入地图容器 DIV 的 ID值 或者 DIV对象，opts 地图初始化参数对象，参数详情参看 MapOptions 列表。注意：地图容器在创建之前必须拥有实际大小，否则可能出现底图无法渲染的问题。
      * @param opts 地图初始化参数
@@ -35,15 +62,15 @@ declare namespace AMap {
     getCenter(): LngLat;
     /**
      * 设置地图显示的缩放级别，参数 zoom 可设范围：[2, 20]
-     * @param zoom 
-     * @param immediately 
-     * @param duration 
+     * @param zoom
+     * @param immediately
+     * @param duration
      */
     setZoom(zoom: number, immediately?: boolean, duration?: number): void;
     /**
      * 设置当前地图可现实的缩放级别, 取值范围为[2, 20]
      * @param zoomRange 缩放级别范围
-     */   
+     */
     setZooms(zoomRange: [number, number]): void;
     /**
      * 获取当前地图缩放级别, 默认取值范围为[2, 20]
@@ -75,7 +102,7 @@ declare namespace AMap {
      * @param immediately 是否立即过渡到目标位置
      * @param duration 动画过度的时长控制，单位 ms，默认值是内部自动计算的一个动态值。
      */
-    setRotation(rotation: number, immediately: boolean, duration?: number): number
+    setRotation(rotation: number, immediately: boolean, duration?: number): number;
     /**
      * 添加图层到地图上
      * @param layer 地图图层对象
@@ -88,7 +115,7 @@ declare namespace AMap {
     setBounds(bounds: Array<number> | Bounds): void;
     /**
      * 指定当前地图显示范围，参数 bounds 为指定的范围
-     * @param lnglat 
+     * @param lnglat
      * @param duration 动画过度的时长控制，单位 ms，默认值是内部自动计算的一个动态值。
      */
     panTo(lnglat: [number, number] | LngLat, duration?: number): void;
@@ -110,7 +137,7 @@ declare namespace AMap {
      */
     getStatus(): MapStates;
     /**
-     * 设置当前地图显示状态，包括是否可鼠标拖拽移动地图、地图是否可缩放、地图是否可旋转（rotateEnable）、 是否可双击放大地图、是否可以通过键盘控制地图旋转（keyboardEnable）等， 
+     * 设置当前地图显示状态，包括是否可鼠标拖拽移动地图、地图是否可缩放、地图是否可旋转（rotateEnable）、 是否可双击放大地图、是否可以通过键盘控制地图旋转（keyboardEnable）等，
      * [相关示例](https://lbs.amap.com/api/javascript-api/example/map/set-map-status)
      * @param opts 地图状态值映射集合
      */
@@ -129,19 +156,20 @@ declare namespace AMap {
      * 从地图上移除图层
      * @param layer 地图图层
      */
-    removeLayer(layer:
-      TileLayer |
-      Polygon |
-      Polyline |
-      BezierCurve |
-      Satellite |
-      Rectangle |
-      Traffic |
-      Ellipse |
-      HawkEye |
-      CircleMarker |
-      ContextMenu |
-      RoadNet
+    removeLayer(
+      layer:
+        | TileLayer
+        | Polygon
+        | Polyline
+        | BezierCurve
+        | Satellite
+        | Rectangle
+        | Traffic
+        | Ellipse
+        | HawkEye
+        | CircleMarker
+        | ContextMenu
+        | RoadNet,
     ): void;
     /**
      * 将多个图层一次替代地图上原有图层，会移除地图原有图层
@@ -152,12 +180,44 @@ declare namespace AMap {
      * 添加覆盖物/图层。参数为单个覆盖物/图层，或覆盖物/图层的数组。
      * @param features 覆盖物对象或者数组 VectorOverlay | Array<any>
      */
-    add(features: Array<any> | TileLayer | Polyline | Marker | LabelMarker | Rectangle | Text | Polygon | InfoWindow | Ellipse | BezierCurve | CircleMarker | Circle | MassMarks): void;
+    add(
+      features:
+        | Array<any>
+        | TileLayer
+        | Polyline
+        | Marker
+        | LabelMarker
+        | Rectangle
+        | Text
+        | Polygon
+        | InfoWindow
+        | Ellipse
+        | BezierCurve
+        | CircleMarker
+        | Circle
+        | MassMarks,
+    ): void;
     /**
      * 删除覆盖物/图层。参数为单个覆盖物/图层，或覆盖物/图层的数组。
      * @param features Array<any> | VectorOverlay
      */
-    remove(features: Array<any> | TileLayer | Polyline | Marker | LabelMarker | Rectangle | Text | Polygon | InfoWindow | Ellipse | BezierCurve | CircleMarker | Circle | MassMarks): void;
+    remove(
+      features:
+        | Array<any>
+        | TileLayer
+        | Polyline
+        | Marker
+        | LabelMarker
+        | Rectangle
+        | Text
+        | Polygon
+        | InfoWindow
+        | Ellipse
+        | BezierCurve
+        | CircleMarker
+        | Circle
+        | MassMarks,
+    ): void;
     /**
      * 注销地图对象，并清空地图容器
      */
@@ -202,7 +262,7 @@ declare namespace AMap {
     containerToLngLat(pixel: Array<number> | Pixel): LngLat;
     /**
      * 莫卡托（单位：米）转成地图容器坐标
-     * @param coord 
+     * @param coord
      */
     coordToContainer(coord: Array<number>): Array<number>;
     /**
@@ -211,7 +271,7 @@ declare namespace AMap {
      */
     containerToCoord(pixel: Array<number> | Pixel): Array<number>;
     /**
-     * 
+     *
      * @param pixel 像素坐标
      * @param zoom 某个地图级别
      */
@@ -229,7 +289,7 @@ declare namespace AMap {
     getResolution(): number;
     /**
      * 获取当前地图比例尺。表示当前屏幕距离一米代表实际距离多少米
-     * @param dpi 
+     * @param dpi
      * @returns 比例尺的值
      */
     getScale(dpi: number): number;
@@ -256,24 +316,29 @@ declare namespace AMap {
      * @param maxZoom 最大 zoom 级别
      * @returns 新的地图视口范围
      */
-    setFitView(overlays: Array<TileLayer> | null, immediately: boolean, avoid: Array<number>, maxZoom?: number): Bounds;
+    setFitView(
+      overlays?: Array<TileLayer> | null,
+      immediately?: boolean,
+      avoid?: Array<number>,
+      maxZoom?: number,
+    ): Bounds;
     /**
-    * 根据 overlays 计算出合适的中心点和 zoom 级别
-    * 参数说明：
-    * @param overlays (Array<Overlay>) 覆盖物
-    * @param avoid (Array<Number> = [0,0,0,0]) 四周边距，上、下、左、右
-    * @param maxZoom (Number = CoreMap.defaultZooms[1]) 最大 zoom 级别
-    */
+     * 根据 overlays 计算出合适的中心点和 zoom 级别
+     * 参数说明：
+     * @param overlays (Array<Overlay>) 覆盖物
+     * @param avoid (Array<Number> = [0,0,0,0]) 四周边距，上、下、左、右
+     * @param maxZoom (Number = CoreMap.defaultZooms[1]) 最大 zoom 级别
+     */
     getFitZoomAndCenterByOverlays(overlays: Array<TileLayer> | null, avoid: number[], maxZoom: number): void;
     /**
-    * 根据 overlays 计算出合适的中心点和 zoom 级别
-    * 参数说明：
-    * @param bounds ((Array<number> | Bounds)) 需要计算的范围
-    * @param avoid (Array<Number> = [0,0,0,0]) 四周边距，上、下、左、右
-    * @param maxZoom (Number = CoreMap.defaultZooms[1]) 最大 zoom 级别
-    */
-    getFitZoomAndCenterByBounds(bounds: (number[] | Bounds), avoid: number[], maxZoom: number): void;
-    
+     * 根据 overlays 计算出合适的中心点和 zoom 级别
+     * 参数说明：
+     * @param bounds ((Array<number> | Bounds)) 需要计算的范围
+     * @param avoid (Array<Number> = [0,0,0,0]) 四周边距，上、下、左、右
+     * @param maxZoom (Number = CoreMap.defaultZooms[1]) 最大 zoom 级别
+     */
+    getFitZoomAndCenterByBounds(bounds: number[] | Bounds, avoid: number[], maxZoom: number): void;
+
     /**
      * 添加控件。参数可以是插件列表中的任何插件对象，如：ToolBar、OverView、Scale等
      * @param control 控件对象
@@ -281,14 +346,14 @@ declare namespace AMap {
     addControl(control: Control | HawkEye | Geolocation): void;
     /**
      * 移除地图上的指定控件 [相关示例](https://lbs.amap.com/api/jsapi-v2/example/mapbar/mapcontrol-control-add-remove/)
-     * @param control 
+     * @param control
      */
     removeControl(control: Control | HawkEye): void;
     /**
      * 设置地图的显示样式，目前支持两种地图样式：
      * - 第一种：自定义地图样式，如 "amap://styles/d6bf8c1d69cea9f5c696185ad4ac4c86" 可前往地图自定义平台定制自己的个性地图样式；
      * - 第二种：官方样式模版,如 "amap://styles/grey"。其他模版样式及自定义地图的使用说明见 [开发指南](https://lbs.amap.com/api/jsapi-v2/guide/map/map-style/) [相关示例](https://lbs.amap.com/api/jsapi-v2/example/personalized-map/set-theme-style/)
-     * @param value 
+     * @param value
      */
     setMapStyle(value: string): void;
     /**
@@ -296,12 +361,12 @@ declare namespace AMap {
      */
     getMapStyle(): void;
     /**
-     * 返回添加的覆盖物对象，可选类型包括marker、circle、polyline、polygon；  
-     * Type可缺省，缺省时返回所有覆盖物（marker、circle、polyline、polygon）。  
+     * 返回添加的覆盖物对象，可选类型包括marker、circle、polyline、polygon；
+     * Type可缺省，缺省时返回所有覆盖物（marker、circle、polyline、polygon）。
      * 返回结果不包含官方覆盖物等，比如定位marker，周边搜索圆等 [相关示例](https://lbs.amap.com/api/jsapi-v2/example/common/get-all-overlays/)
      * @param type 可选，覆盖物类型
      */
-    getAllOverlays(type?: string): void;
+    getAllOverlays(type?: string): any[];
     /**
      * 删除地图上所有的覆盖物
      */
@@ -326,40 +391,40 @@ declare namespace AMap {
     setFeatures(features: Array<string>): void;
     /**
      * 比例尺之类的插件。
-     * @param ControlType 
-     * @param CallBack 
+     * @param ControlType
+     * @param CallBack
      */
     plugin(ControlType: Array<ControlType>, callBack: () => void): void;
   }
   type ControlType =
-    'AMap.AutoComplete' |
-    'AMap.Autocomplete' |
-    'AMap.ControlBar' |
-    'AMap.CloudDataSearch' |
-    'AMap.Driving' |
-    'AMap.DragRoute' |
-    'AMap.DistrictSearch' |
-    'AMap.ElasticMarker' |
-    'AMap.Geolocation' |
-    'AMap.StationSearch' |
-    'AMap.Scale' |
-    'AMap.Geocoder' |
-    'AMap.HeatMap' |
-    'AMap.HawkEye' |
-    'AMap.LineSearch' |
-    'AMap.MouseTool' |
-    'AMap.MarkerCluster' |
-    'AMap.OverView' |
-    'AMap.PlaceSearch' |
-    'AMap.PolyEditor' |
-    'AMap.Riding' |
-    'AMap.Transfer' |
-    'AMap.TruckDriving' |
-    'AMap.ToolBar' |
-    'AMap.MapType' |
-    'AMap.Walking' |
-    'AMap.Weather' |
-    'AMap.MoveAnimation';
+    | 'AMap.AutoComplete'
+    | 'AMap.Autocomplete'
+    | 'AMap.ControlBar'
+    | 'AMap.CloudDataSearch'
+    | 'AMap.Driving'
+    | 'AMap.DragRoute'
+    | 'AMap.DistrictSearch'
+    | 'AMap.ElasticMarker'
+    | 'AMap.Geolocation'
+    | 'AMap.StationSearch'
+    | 'AMap.Scale'
+    | 'AMap.Geocoder'
+    | 'AMap.HeatMap'
+    | 'AMap.HawkEye'
+    | 'AMap.LineSearch'
+    | 'AMap.MouseTool'
+    | 'AMap.MarkerCluster'
+    | 'AMap.OverView'
+    | 'AMap.PlaceSearch'
+    | 'AMap.PolyEditor'
+    | 'AMap.Riding'
+    | 'AMap.Transfer'
+    | 'AMap.TruckDriving'
+    | 'AMap.ToolBar'
+    | 'AMap.MapType'
+    | 'AMap.Walking'
+    | 'AMap.Weather'
+    | 'AMap.MoveAnimation';
   interface MapEvents {
     /**
      * 地图缩放级别更改后触发
@@ -436,15 +501,15 @@ declare namespace AMap {
     /**
      * 鼠标点击热点时触发
      */
-    onHotspotClick?: (event: { type: string, lnglat: LngLat, name: string, id: string }) => void;
+    onHotspotClick?: (event: { type: string; lnglat: LngLat; name: string; id: string }) => void;
     /**
      * 鼠标移出热点时触发
      */
-    onHotspotOut?: (event: { type: string, lnglat: LngLat, name: string, id: string }) => void;
+    onHotspotOut?: (event: { type: string; lnglat: LngLat; name: string; id: string }) => void;
     /**
      * 鼠标滑过热点时触发
      */
-    onHotspotOver?: (event: { type: string, lnglat: LngLat, name: string, id: string }) => void;
+    onHotspotOver?: (event: { type: string; lnglat: LngLat; name: string; id: string }) => void;
     /**
      * 触摸开始时触发事件，仅适用移动设备
      */
@@ -474,8 +539,9 @@ declare namespace AMap {
     city: string;
     citycode: string;
     district: string;
-  }
+  };
   interface MapStates {
+    complete?: boolean;
     /**
      * 地图是否可通过双击鼠标放大地图, 默认为true。此属性可被setStatus/getStatus 方法控制
      */
@@ -549,7 +615,7 @@ declare namespace AMap {
      */
     features?: Array<string>;
     /** 地图图层数组，数组可以是图层 中的一个或多个，默认为普通二维地图。 当叠加多个 图层 时，普通二维地图需通过实例化一个TileLayer类实现。 如果你希望创建一个默认底图图层，使用 AMap.createDefaultLayer() */
-    layers?: (TileLayer | Satellite | Traffic | RoadNet)[]
+    layers?: (TileLayer | Satellite | Traffic | RoadNet)[];
     /**
      * (default [2,20])	地图显示的缩放级别范围, 默认为 [2, 20] ，取值范围 [2 ~ 20]
      */
@@ -600,21 +666,21 @@ declare namespace AMap {
      */
     skyColor?: string | Array<number>;
     /**
-     * 为 Map 实例指定掩模的路径，各图层将只显示路径范围内图像，3D视图下有效。 格式为一个经纬度的一维、二维或三维数组。  
-     * 相关示例  
-     * 一维数组时代表一个普通多边形路径，如:  
-     * [lng1,lat1] , [lng2,lat2] , [lng3,lat3] ]  
-     * 二维数组时代表一个带洞的多边形路径，如:  
-     * [ [lng4,lat4] , [lng5,lat5] , [lng6,lat6] ], [ [lng7,lat7] , [lng8,lat8] , [lng9,lat9] ] ]  
-     * 三维数组时代表多个多边形路径，如:  
+     * 为 Map 实例指定掩模的路径，各图层将只显示路径范围内图像，3D视图下有效。 格式为一个经纬度的一维、二维或三维数组。
+     * 相关示例
+     * 一维数组时代表一个普通多边形路径，如:
+     * [lng1,lat1] , [lng2,lat2] , [lng3,lat3] ]
+     * 二维数组时代表一个带洞的多边形路径，如:
+     * [ [lng4,lat4] , [lng5,lat5] , [lng6,lat6] ], [ [lng7,lat7] , [lng8,lat8] , [lng9,lat9] ] ]
+     * 三维数组时代表多个多边形路径，如:
      * [ [ [lng1,lat1] , [lng2,lat2] , [lng3,lat3] ],
-     * // 一个普通多边形 [ 
+     * // 一个普通多边形 [
      * //一个带洞多边形 [ [lng4,lat4] , [lng5,lat5] , [lng6,lat6] ], [ [lng7,lat7] , [lng8,lat8] , [lng9,lat9] ] ] ]}
      */
     mask?: Array<number>;
     /**
      * `VIP 用户` 拿海外地图的图层，需要设置 `overseaDataType` 和 `vectorMapForeign` 两个参数。
-     * 
+     *
      * ```json
      * overseaDataType: "mapbox",
      * vectorMapForeign: "style_zh_cn"
@@ -624,35 +690,39 @@ declare namespace AMap {
     overseaDataType?: string;
     /**
      * `VIP 用户` 拿海外地图的图层，需要设置 `overseaDataType` 和 `vectorMapForeign` 两个参数。
-     * 
+     *
      * ```json
      * overseaDataType: "mapbox",
      * vectorMapForeign: "style_zh_cn"
      * ```
      * - https://github.com/uiwjs/react-amap/issues/357
      */
-    vectorMapForeign?: string,
+    vectorMapForeign?: string;
     /**
      * 可下载地图设置
-     * 
+     *
      * ```json
      * WebGLParams: {
      *   preserveDrawingBuffer: true,
      * }
      * ```
-     * 
+     *
      * - https://github.com/uiwjs/react-amap/issues/357#issuecomment-2124292404
      */
     WebGLParams?: {
-      preserveDrawingBuffer?: boolean,
-    }
+      preserveDrawingBuffer?: boolean;
+    };
   }
   function plugin(ControlType: Array<ControlType>, callBack: () => void): void;
   /**
    * 为坐标转换类，支持将其他坐标系的坐标点转换为高德坐标系。坐标转换方法
-   * @param lnglat 
-   * @param type 
-   * @param callBack 
+   * @param lnglat
+   * @param type
+   * @param callBack
    */
-  function convertFrom(lnglat: LngLat | Array<LngLat>, type: 'gps' | 'baidu' | 'mapbar', callBack: (status: string, result: ConvertorResult) => void): void;
+  function convertFrom(
+    lnglat: LngLat | Array<LngLat>,
+    type: 'gps' | 'baidu' | 'mapbar',
+    callBack: (status: string, result: ConvertorResult) => void,
+  ): void;
 }
